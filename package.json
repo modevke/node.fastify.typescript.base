@@ -1,0 +1,51 @@
+{
+  "name": "node.fastify.typescript.base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --maxWorkers=2 --forceExit --ci --verbose --detectOpenHandles",
+    "test:watch": "jest --coverage --watchAll",
+    "build:watch": "onchange 'src/**/*.ts' -- npm run build",
+    "view:coverage": "serve coverage/lcov-report",
+    "clean": "rm -rf coverage src/**/*.js src/**/*.map",
+    "start": "ts-node src/main.ts",
+    "build": "tsc",
+    "migrate": "node ./migrate.js up",
+    "seed": "sequelize db:seed:all",
+    "restart": "node ./migrate.js down && node ./migrate.js up && npm run test",
+    "migrate:test": "node ./migrate.js up && npm run test",
+    "live": "node build/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^7.0.3",
+    "ajv-keywords": "^4.0.0",
+    "axios": "^0.21.1",
+    "bluebird": "^3.7.2",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.2",
+    "fastify-formbody": "^5.0.0",
+    "fastify-helmet": "^5.0.3",
+    "fastify-plugin": "^3.0.0",
+    "fastify-static": "^3.3.1",
+    "fastify-swagger": "^3.5.0",
+    "moment-timezone": "^0.5.32",
+    "pg": "^8.5.1",
+    "sequelize": "^6.3.5",
+    "sequelize-datatable": "^2.0.0",
+    "umzug": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.19",
+    "@types/moment-timezone": "^0.5.30",
+    "@types/sequelize": "^4.28.9",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.3"
+  }
+}
